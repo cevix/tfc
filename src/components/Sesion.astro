@@ -1,0 +1,56 @@
+---
+import { getSession } from 'auth-astro/server';
+const session = await getSession(Astro.request);
+console.log(session)
+
+---
+
+<div>
+    {
+					session ? (
+						<p>Bienvenido{session.user?.name}</p>
+						<p>Bienvenido{session.user?.email}</p>
+						<p>Bienvenido{session.user?.image}</p>
+						<button id="logout">Cerrar sesión</button>
+						
+					):(
+						<button id="login" onclick="logear()">Iniciar sesión</button>
+  						
+					)
+
+
+					}
+
+<script>
+   
+	const { signIn, signOut } = await import("auth-astro/client")
+		
+	/*
+	function logear(){
+			signIn("twich")
+		}
+	*/
+	
+    const sesionarse = document.querySelector("#login")
+	const desesion = document.querySelector("#logout")
+
+	sesionarse?.addEventListener('click', async(event) =>{
+		await signIn('twitch')
+
+	})
+	desesion?.addEventListener('click', async(event) =>{
+		await signOut()
+
+	})
+
+
+    //Document.querySelector("#logout").onclick = () => signOut()
+	
+	
+	
+	
+	
+  </script>
+
+
+</div>
