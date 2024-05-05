@@ -1,7 +1,8 @@
-import { $ as $$Layout } from './index_CGEStR_0.mjs';
-import { e as createAstro, f as createComponent, r as renderTemplate, k as renderComponent, m as maybeRenderHead } from '../astro_-j-WPaGY.mjs';
+import './formulario_CECs7nbH.mjs';
+import { c as createAstro, d as createComponent, r as renderTemplate, k as renderComponent, m as maybeRenderHead } from '../astro_B6cYgTnJ.mjs';
 import 'kleur/colors';
 import 'html-escaper';
+import { $ as $$Layout } from './index_DnoJICxq.mjs';
 
 const $$Astro = createAstro();
 const $$MostrarFoto = createComponent(async ($$result, $$props, $$slots) => {

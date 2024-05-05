@@ -1,5 +1,5 @@
 export { renderers } from '../renderers.mjs';
 
-const page = () => import('./pages/generic_DSKlqa-8.mjs');
+const page = () => import('./pages/subirFoto_BobTtCGi.mjs');
 
 export { page };

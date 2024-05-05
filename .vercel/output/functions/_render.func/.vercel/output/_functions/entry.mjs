@@ -1,7 +1,7 @@
 import { renderers } from './renderers.mjs';
-import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_CR2lj_xs.mjs';
-import { e as appendForwardSlash, j as joinPaths, t as trimSlashes, f as fileExtension, s as slash, p as prependForwardSlash, g as removeTrailingForwardSlash, h as collapseDuplicateSlashes } from './chunks/astro/assets-service_dfFk12_O.mjs';
-import { R as ROUTE_TYPE_HEADER, l as REROUTE_DIRECTIVE_HEADER, A as AstroError, n as ResponseSentError, o as MiddlewareNoDataOrNextCalled, p as MiddlewareNotAResponse, G as GetStaticPathsRequired, q as InvalidGetStaticPathsReturn, t as InvalidGetStaticPathsEntry, u as GetStaticPathsExpectedParams, v as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, N as NoMatchingStaticPathFound, w as PrerenderDynamicEndpointPathCollide, x as ReservedSlotName, y as renderSlotToString, z as renderJSX, B as chunkToString, C as isRenderInstruction, H as LocalsNotAnObject, J as clientLocalsSymbol, K as clientAddressSymbol$1, O as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, Q as ASTRO_VERSION, T as responseSentSymbol$1, V as AstroResponseHeadersReassigned, W as renderPage, X as renderEndpoint, Y as REROUTABLE_STATUS_CODES } from './chunks/astro_-j-WPaGY.mjs';
+import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_DpVuPZUe.mjs';
+import { e as appendForwardSlash, j as joinPaths, t as trimSlashes, f as fileExtension, s as slash, p as prependForwardSlash, g as removeTrailingForwardSlash, h as collapseDuplicateSlashes } from './chunks/astro/assets-service_CyF0eTl6.mjs';
+import { R as ROUTE_TYPE_HEADER, l as REROUTE_DIRECTIVE_HEADER, A as AstroError, n as ResponseSentError, o as MiddlewareNoDataOrNextCalled, p as MiddlewareNotAResponse, G as GetStaticPathsRequired, q as InvalidGetStaticPathsReturn, t as InvalidGetStaticPathsEntry, u as GetStaticPathsExpectedParams, v as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, D as DEFAULT_404_COMPONENT, N as NoMatchingStaticPathFound, w as PrerenderDynamicEndpointPathCollide, x as ReservedSlotName, y as renderSlotToString, z as renderJSX, B as chunkToString, C as isRenderInstruction, H as LocalsNotAnObject, J as clientLocalsSymbol, K as clientAddressSymbol$1, O as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, Q as ASTRO_VERSION, T as responseSentSymbol$1, V as AstroResponseHeadersReassigned, W as renderPage, X as renderEndpoint, Y as REROUTABLE_STATUS_CODES } from './chunks/astro_B6cYgTnJ.mjs';
 import { serialize, parse } from 'cookie';
 import 'html-escaper';
 import 'clsx';
@@ -2103,21 +2103,23 @@ const createExports = (manifest, { middlewareSecret }) => {
   return { default: handler };
 };
 
-const _page0 = () => import('./chunks/generic_axeaT4A6.mjs');
+const _page0 = () => import('./chunks/generic_B8uDhvxA.mjs');
 const _page1 = () => import('./chunks/_.._Cpu793mi.mjs');
-const _page2 = () => import('./chunks/mostrarFoto_DdxFRcE7.mjs');
-const _page3 = () => import('./chunks/perfil_BfZ85HUd.mjs');
-const _page4 = () => import('./chunks/subirFoto_CyI_4IDH.mjs');
-const _page5 = () => import('./chunks/subirProducto_tGRCQE6o.mjs');
-const _page6 = () => import('./chunks/index_LPDuemQ0.mjs');
+const _page2 = () => import('./chunks/formulario_C7nnQ6AS.mjs');
+const _page3 = () => import('./chunks/mostrarFoto_D6upPmfa.mjs');
+const _page4 = () => import('./chunks/perfil_4-k-REOo.mjs');
+const _page5 = () => import('./chunks/subirFoto_ALH7dmlp.mjs');
+const _page6 = () => import('./chunks/subirProducto_CDHRO3TA.mjs');
+const _page7 = () => import('./chunks/index_Cca0w4cs.mjs');
 const pageMap = new Map([
     ["node_modules/astro/dist/assets/endpoint/generic.js", _page0],
     ["node_modules/auth-astro/src/api/[...auth].ts", _page1],
-    ["src/pages/mostrarFoto.astro", _page2],
-    ["src/pages/perfil.astro", _page3],
-    ["src/pages/subirFoto.astro", _page4],
-    ["src/pages/subirProducto.astro", _page5],
-    ["src/pages/index.astro", _page6]
+    ["src/pages/formulario.astro", _page2],
+    ["src/pages/mostrarFoto.astro", _page3],
+    ["src/pages/perfil.astro", _page4],
+    ["src/pages/subirFoto.astro", _page5],
+    ["src/pages/subirProducto.astro", _page6],
+    ["src/pages/index.astro", _page7]
 ]);
 
 const _manifest = Object.assign(manifest, {
@@ -2126,7 +2128,7 @@ const _manifest = Object.assign(manifest, {
     middleware: onRequest
 });
 const _args = {
-    "middlewareSecret": "376494c8-b4be-4c0e-8c0d-3ccda7002e05"
+    "middlewareSecret": "234c4baf-3308-42f8-8930-946d54f3021e"
 };
 const _exports = createExports(_manifest, _args);
 const __astrojsSsrVirtualEntry = _exports.default;

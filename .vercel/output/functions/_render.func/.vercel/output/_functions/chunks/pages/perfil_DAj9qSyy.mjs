@@ -1,7 +1,8 @@
-import { a as $$Sesion, $ as $$Layout } from './index_CGEStR_0.mjs';
-import { e as createAstro, f as createComponent, r as renderTemplate, k as renderComponent, m as maybeRenderHead, h as addAttribute } from '../astro_-j-WPaGY.mjs';
+import './formulario_CECs7nbH.mjs';
+import { c as createAstro, d as createComponent, r as renderTemplate, k as renderComponent, m as maybeRenderHead, h as addAttribute } from '../astro_B6cYgTnJ.mjs';
 import 'kleur/colors';
 import 'html-escaper';
+import { a as $$Sesion, $ as $$Layout } from './index_DnoJICxq.mjs';
 import { g as getSession } from './__C1CYcNGq.mjs';
 
 const $$Astro = createAstro();

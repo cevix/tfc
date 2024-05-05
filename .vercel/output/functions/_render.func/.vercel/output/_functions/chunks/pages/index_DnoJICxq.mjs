@@ -1,13 +1,9 @@
-import crypto from 'node:crypto';
-import { e as createAstro, f as createComponent, r as renderTemplate, i as renderSlot, j as renderHead, h as addAttribute, m as maybeRenderHead, k as renderComponent } from '../astro_-j-WPaGY.mjs';
+import './formulario_CECs7nbH.mjs';
+import { c as createAstro, d as createComponent, r as renderTemplate, i as renderSlot, j as renderHead, h as addAttribute, m as maybeRenderHead, k as renderComponent } from '../astro_B6cYgTnJ.mjs';
 import 'kleur/colors';
 import 'html-escaper';
 import 'clsx';
 import { g as getSession } from './__C1CYcNGq.mjs';
-
-if (!globalThis.crypto) globalThis.crypto = crypto;
-if (typeof globalThis.crypto.subtle === "undefined") globalThis.crypto.subtle = crypto.webcrypto.subtle;
-if (typeof globalThis.crypto.randomUUID === "undefined") globalThis.crypto.randomUUID = crypto.randomUUID;
 
 var __freeze = Object.freeze;
 var __defProp = Object.defineProperty;
