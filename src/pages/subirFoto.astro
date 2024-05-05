@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+//https://api.imgbb.com/1/upload?&key=a18deced07307d21deb85f9c3ee0c5f7
+ 
+
+if (Astro.request.method === 'POST') {
+    const formData = await Astro.request.formData();
+    const fotito= formData.get('urlFoto')
+    console.log(fotito)
+}
+
+---
+
+<Layout title="Welcome to Astro.">
+
+    <form method="Post">
+        <input id="image" type="file" name="image">
+        <input type="submit" >
+    </form>
+    
+    <button id="boton">hola</button>
+
+    <div id="imagene">
+
+    </div>
+    
+    <script>
+    
+    const uploadImage = async(e:any) => {
+        /*const imageFile = document.getElementById("image")
+        console.log(imageFile)*/
+        const imageFile = e.target.files[0];
+        console.log(imageFile)
+        console.log(imageFile.name)
+        const url = 'https://api.imgbb.com/1/upload?&key=a18deced07307d21deb85f9c3ee0c5f7&name='+imageFile.name
+        const data = new FormData();
+        data.append("image",imageFile)
+
+        try{
+            const response = await fetch(url,{
+                method: "POST",
+                body: data,
+            })
+
+            const responseData = await response.json()
+
+            const foto = responseData.data.url
+
+            console.log(foto)
+            
+            var form = document.querySelector('form');
+
+            // Crea un elemento input
+            var input = document.createElement('input');
+
+            // Establece los atributos del elemento input
+            input.type = 'hidden';
+            input.name = 'urlFoto';
+            input.id = 'urlFoto';
+            input.value = foto; // Suponiendo que foto es una variable que contiene el valor que deseas asignar
+
+            // Añade el elemento input al formulario
+            form?.appendChild(input);
+
+        }catch(error){
+
+        }
+
+    }
+    
+
+    var formulario=document.querySelector("form")
+    //console.log(image)
+    //console.log(image)
+
+    formulario?.addEventListener("change ",uploadImage)
+
+    /*
+    var image=document.querySelector("#image")
+    console.log()
+*/
+    //image.addEventListener("change",function(e){
+        
+    //})
+    </script>
+</Layout>
+
+
+
+
+

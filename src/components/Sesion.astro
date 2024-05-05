@@ -3,33 +3,42 @@ import { getSession } from 'auth-astro/server';
 const session = await getSession(Astro.request);
 console.log(session)
 
+
+const {nombreUsuario=session?.user?.name}=Astro.props
 ---
 
-<div>
+
     {
 					session ? (
-						<p>Bienvenido{session.user?.name}</p>
-						<p>Bienvenido{session.user?.email}</p>
-						<p>Bienvenido{session.user?.image}</p>
-						<button id="logout">Cerrar sesión</button>
+							<div class="dropdown w-auto">
+								<button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+									<img class="img-fluid w-25 rounded-circle" srcset={session?.user?.image}>
+								</button>
+								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" id="logout">Cerrar sesión</a></li>
+									<li><a class="dropdown-item" href="#">Another action</a></li>
+									<li><a class="dropdown-item" href="#">Something else here</a></li>
+								</ul>
+							</div>
+							
+
+							<a href="/perfil/"><button type="button" class="btn btn-primary">Perfil</button></a>
+							<a href="/subirFoto/"><button type="button" class="btn btn-primary">Foto</button></a>
+							<a href="/mostrarFoto/"><button type="button" class="btn btn-primary">Foto</button></a>
+							<a href="/subirProducto/"><button type="button" class="btn btn-primary">Añadir</button></a>
+							<a href={"https://www.twitch.tv/"+nombreUsuario}><button type="button" class="btn btn-primary">Publicar</button></a>
+						
 						
 					):(
-						<button id="login" onclick="logear()">Iniciar sesión</button>
-  						
+						
+							<button id="login" class="btn btn-primary">Iniciar sesión</button>
 					)
-
-
 					}
 
 <script>
    
 	const { signIn, signOut } = await import("auth-astro/client")
 		
-	/*
-	function logear(){
-			signIn("twich")
-		}
-	*/
 	
     const sesionarse = document.querySelector("#login")
 	const desesion = document.querySelector("#logout")
@@ -44,13 +53,9 @@ console.log(session)
 	})
 
 
-    //Document.querySelector("#logout").onclick = () => signOut()
+    
 	
-	
-	
-	
-	
-  </script>
+</script>
 
 
-</div>
+</div> 

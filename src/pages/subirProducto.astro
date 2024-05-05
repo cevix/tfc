@@ -1,0 +1,146 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getSession } from "auth-astro/server";
+//https://api.imgbb.com/1/upload?&key=a18deced07307d21deb85f9c3ee0c5f7
+const session = await getSession(Astro.request);
+console.log(session)
+
+if (Astro.request.method === 'POST') {
+    const formData = await Astro.request.formData();
+    const fotito= formData.get('urlFoto')
+    console.log(fotito)
+}
+
+---
+
+<Layout title="Welcome to Astro.">
+
+<div class="d-flex justify-content-center">
+    
+    <div class="col-6">
+        <form method="Post">
+
+            <h3>Publicar Producto</h3>
+            <input type="hidden"value={session?.user?.name}>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Nombre del producto</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder" required>
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput2" class="form-label">Descripción</label>
+                    <input type="text" class="form-control" id="" placeholder="Another input placeholder">
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="validationCustom04" class="form-label">Tipo</label>
+                    <select class="form-select" id="estado" required>
+                      <option selected disabled value="">Elige el estado del producto</option>
+                      <option>Ratón</option>
+                      <option value="">Teclado</option>
+                      <option value="">Monitor</option>
+                      <option value="">Auriculares</option>
+                      <option value="">Altavoces</option>
+                      <option value="">Ordenador</option>
+                      <option value=""></option>
+                      <option value=""></option>
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a  valid state.
+                    </div>
+                  </div>
+
+                <div class="col-md-3 mb-3">
+                    <label for="validationCustom04" class="form-label">Estado</label>
+                    <select class="form-select" id="validationCustom04" required>
+                      <option selected disabled value="">Elige el estado del producto</option>
+                      <option>Sin abrir</option>
+                      <option value="">En su caja</option>
+                      <option value="">Nuevo</option>
+                      <option value="">Como nuevo</option>
+                      <option value="">En buen estado</option>
+                      <option value="">En condiciones aceptable</option>
+                      <option value="">Lo ha dado todo</option>
+                      
+                    </select>
+                    <div class="invalid-feedback">
+                      Please select a  valid state.
+                    </div>
+                  </div>
+                
+                <div class="mb-3 ">
+                    <label for="formGroupExampleInput2" class="form-label">Precio</label>
+                    <input type="number" class="form-control" id="" placeholder="Another input placeholder">
+                </div>
+                <div class="mb-3">
+                    <input id="image" class="form-control" type="file" name="image">
+                </div>
+                <div class="mb-3">
+                    <input type="submit" class="btn btn-primary">
+                </div>
+
+
+            
+        </form>
+    </div>
+</div>
+    
+    
+    <script>
+    
+    const uploadImage = async(e:any) => {
+        /*const imageFile = document.getElementById("image")
+        console.log(imageFile)*/
+        const imageFile = e.target.files[0];
+        console.log(imageFile)
+        console.log(imageFile.name)
+        const url = 'https://api.imgbb.com/1/upload?&key=a18deced07307d21deb85f9c3ee0c5f7&name='+imageFile.name
+        const data = new FormData();
+        data.append("image",imageFile)
+        try{
+            const response = await fetch(url,{
+                method: "POST",
+                body: data,
+            })
+
+            const responseData = await response.json()
+
+            const foto = responseData.data.url
+
+            console.log(foto)
+            
+            var form = document.querySelector('form');
+
+            // Crea un elemento input
+            var input = document.createElement('input');
+
+            // Establece los atributos del elemento input
+            input.type = 'hidden';
+            input.name = 'urlFoto';
+            input.id = 'urlFoto';
+            input.value = foto; // Suponiendo que foto es una variable que contiene el valor que deseas asignar
+
+            // Añade el elemento input al formulario
+            form?.appendChild(input);
+
+        }catch(error){
+
+        }
+
+    }
+    
+
+    var formulario=document.querySelector("form")
+    //console.log(image)
+    //console.log(image)
+
+    formulario?.addEventListener("change ",uploadImage)
+
+    /*
+    var image=document.querySelector("#image")
+    console.log()
+*/
+    //image.addEventListener("change",function(e){
+        
+    //})
+    </script>
+</Layout>
