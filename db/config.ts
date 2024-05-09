@@ -1,6 +1,6 @@
 import { defineDb,defineTable,column} from 'astro:db';
 
-const producto = ({
+const producto = defineTable({
   columns:{
     nombreProducto:column.text(),
     descripcion:column.text(),
