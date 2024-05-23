@@ -15,19 +15,14 @@ const {nombreUsuario=session?.user?.name}=Astro.props
 									<img class="img-fluid w-25 rounded-circle" srcset={session?.user?.image}>
 								</button>
 								<ul class="dropdown-menu">
+									<li><a class="dropdown-item" href="/perfil/">Perfil</a></li>
 									<li><a class="dropdown-item" id="logout">Cerrar sesión</a></li>
-									<li><a class="dropdown-item" href="#">Another action</a></li>
-									<li><a class="dropdown-item" href="#">Something else here</a></li>
 								</ul>
 							</div>
 							
 
-							<a href="/perfil/"><button type="button" class="btn btn-primary">Perfil</button></a>
-							<a href="/subirFoto/"><button type="button" class="btn btn-primary">Foto</button></a>
-							<a href="/mostrarFoto/"><button type="button" class="btn btn-primary">Foto</button></a>
-							<a href="/subirProducto/"><button type="button" class="btn btn-primary">Añadir</button></a>
-							<a href={"https://www.twitch.tv/"+nombreUsuario}><button type="button" class="btn btn-primary">Publicar</button></a>
-						
+							
+							<a href="/subirProducto/"><button type="button" class="btn btn-primary">Publicar</button></a>			
 						
 					):(
 						
@@ -44,11 +39,12 @@ const {nombreUsuario=session?.user?.name}=Astro.props
 	const desesion = document.querySelector("#logout")
 
 	sesionarse?.addEventListener('click', async(event) =>{
-		await signIn('twitch')
+		await signIn('Twich')
 
 	})
 	desesion?.addEventListener('click', async(event) =>{
 		await signOut()
+		window.location.replace("/")
 
 	})
 
@@ -57,5 +53,10 @@ const {nombreUsuario=session?.user?.name}=Astro.props
 	
 </script>
 
+<style>
+	btn{
+		width: 50%;
+	}
+</style>
 
 </div> 

@@ -7,24 +7,25 @@ import Sesion from '../components/Sesion.astro';
 import { db, producto,like } from 'astro:db';
 
 const productito = await db.select().from(producto).where(
-	like(producto.tipo,'teclado')
+	like(producto.tipo,'auriculares')
 )
 
 productito.map(({nombreProducto}) => (
 	console.log(nombreProducto)
 ))
 
+
 ---
 
 <Layout title="Welcome to Astro.">
 	
+
 	<div class=" py-4 d-flex justify-content-center">
 		<div class="w-75">
-			<h4 class="ms-2">Teclados</h4>
+			<h4 class="ms-2">Auriculares</h4>
 			<hr/>
 		</div>	
 	</div>
-
 	<div class="container-fluid d-flex justify-content-center">
 
 		<div class="col-10 d-flex flex-wrap justify-content-center">
@@ -34,7 +35,7 @@ productito.map(({nombreProducto}) => (
 				<div class="d-flex px-2 py-3">
 					<div class="card col-12" style="width: 18rem;">
 						<img srcset={img} class="card-img-top" alt="...">
-						<div class="card-header"><a href={"/mostrarPerfil?nombreAutor="+autor}>{autor}</a></div>
+						<div class="card-header"><a href={"https://www.twitch.tv/"+autor} class="author">{autor}</a></div>
 						<div class="card-body">
 						<h5 class="card-title">{nombreProducto}</h5>
 						<p class="card-text">{descripcion}</p>
@@ -51,10 +52,9 @@ productito.map(({nombreProducto}) => (
 		
 
 	</div>
-	<script>
-
-
-	</script>
 	
 </Layout>
+
+
+	
 

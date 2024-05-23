@@ -1,4 +1,5 @@
 ---
+import { db,producto } from "astro:db";
 import Layout from "../layouts/Layout.astro";
 import { getSession } from "auth-astro/server";
 //https://api.imgbb.com/1/upload?&key=a18deced07307d21deb85f9c3ee0c5f7
@@ -8,7 +9,31 @@ console.log(session)
 if (Astro.request.method === 'POST') {
     const formData = await Astro.request.formData();
     const fotito= formData.get('urlFoto')
+    
+    const autor = formData.get('autor')
+    const nombreProducto = formData.get('nombre')
+    const descrip = formData.get('descrip')
+    const estado = formData.get('estado')
+    const tipo = formData.get('tipo')
+    const precio = formData.get('precio')
+
+    if (typeof autor === 'string' && 
+    typeof nombreProducto === 'string' && 
+    typeof descrip === 'string' && 
+    typeof estado === 'string' && 
+    typeof tipo === 'string'&& 
+    typeof precio === 'string'&& 
+    typeof fotito === 'string') {
+        await db.insert(producto).values({ nombreProducto:nombreProducto, descripcion:descrip,precio:precio,img:fotito,tipo:tipo,autor:autor,estado:estado}); 
+       console.log("todo funciono correctamente") 
+    }
     console.log(fotito)
+    console.log(autor)
+    console.log(nombreProducto)
+    console.log(descrip)
+    console.log(estado)
+    console.log(tipo)
+    console.log(precio)
 }
 
 ---
@@ -17,32 +42,35 @@ if (Astro.request.method === 'POST') {
 
 <div class="d-flex justify-content-center">
     
-    <div class="col-6">
-        <form method="Post" action="/">
+    <div class="col-6 mt-5">
+        <form method="post">
 
             <h3>Publicar Producto</h3>
-            <input type="hidden"value={session?.user?.name}>
+            <hr/>
+            <div class="contenidoImg">
+
+            </div>
+            <input type="hidden" name="autor" value={session?.user?.name}>
+            
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">Nombre del producto</label>
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder" required>
+                    <input type="text" class="form-control" name="nombre" placeholder="Introduce el nombre del producto" required>
                 </div>
                 <div class="mb-3">
                     <label for="formGroupExampleInput2" class="form-label">Descripción</label>
-                    <input type="text" class="form-control" id="" placeholder="Another input placeholder">
+                    <input type="text" class="form-control" name="descrip" placeholder="Introduce la descripción del producto">
                 </div>
 
                 <div class="col-md-3 mb-3">
                     <label for="validationCustom04" class="form-label">Tipo</label>
-                    <select class="form-select" id="estado" required>
-                      <option selected disabled value="">Elige el estado del producto</option>
+                    <select class="form-select" name="tipo" required>
+                      <option selected disabled value="">Elige el tipo del producto</option>
                       <option>Ratón</option>
-                      <option value="">Teclado</option>
-                      <option value="">Monitor</option>
-                      <option value="">Auriculares</option>
-                      <option value="">Altavoces</option>
-                      <option value="">Ordenador</option>
-                      <option value=""></option>
-                      <option value=""></option>
+                      <option value="teclado">Teclado</option>
+                      <option value="monitor">Monitor</option>
+                      <option value="auriculares">Auriculares</option>
+                      <option value="altavoces">Altavoces</option>
+                      <option value="ordenador">Ordenador</option>
                     </select>
                     <div class="invalid-feedback">
                       Please select a  valid state.
@@ -51,15 +79,15 @@ if (Astro.request.method === 'POST') {
 
                 <div class="col-md-3 mb-3">
                     <label for="validationCustom04" class="form-label">Estado</label>
-                    <select class="form-select" id="validationCustom04" required>
+                    <select class="form-select" name="estado" required>
                       <option selected disabled value="">Elige el estado del producto</option>
-                      <option>Sin abrir</option>
-                      <option value="">En su caja</option>
-                      <option value="">Nuevo</option>
-                      <option value="">Como nuevo</option>
-                      <option value="">En buen estado</option>
-                      <option value="">En condiciones aceptable</option>
-                      <option value="">Lo ha dado todo</option>
+                      <option value="Sin abrir">Sin abrir</option>
+                      <option value="En su caja">En su caja</option>
+                      <option value="Nuevo">Nuevo</option>
+                      <option value="Como nuevo">Como nuevo</option>
+                      <option value="En buen estado">En buen estado</option>
+                      <option value="En condiciones aceptable">En condiciones aceptable</option>
+                      <option value="Lo ha dado todo">Lo ha dado todo</option>
                       
                     </select>
                     <div class="invalid-feedback">
@@ -69,10 +97,10 @@ if (Astro.request.method === 'POST') {
                 
                 <div class="mb-3 ">
                     <label for="formGroupExampleInput2" class="form-label">Precio</label>
-                    <input type="number" class="form-control" id="" placeholder="Another input placeholder">
+                    <input type="number" class="form-control" name="precio" placeholder="Intodeuce el precio del producto">
                 </div>
                 <div class="mb-3">
-                    <input id="image" class="form-control" type="file" name="image">
+                    <input id="image" class="form-control" type="file" name="image" accept="image/*">
                 </div>
                 <div class="mb-3">
                     <input type="submit" class="btn btn-primary">
@@ -85,55 +113,66 @@ if (Astro.request.method === 'POST') {
 </div>
     
     
-    <script>
+    <script >
     
     const uploadImage = async(e:any) => {
         /*const imageFile = document.getElementById("image")
         console.log(imageFile)*/
-        const imageFile = e.target.files[0];
-        console.log(imageFile)
-        console.log(imageFile.name)
-        const url = 'https://api.imgbb.com/1/upload?&key=a18deced07307d21deb85f9c3ee0c5f7&name='+imageFile.name
-        const data = new FormData();
-        data.append("image",imageFile)
-        try{
-            const response = await fetch(url,{
-                method: "POST",
-                body: data,
-            })
+        let subir=confirm("Quieres subir esta imagen")
+        
+        if (subir) {
+            const imageFile = e.target.files[0];
+            console.log(imageFile)
+            console.log(imageFile.name)
+            const url = 'https://api.imgbb.com/1/upload?&key=a18deced07307d21deb85f9c3ee0c5f7&name='+imageFile.name
+            const data = new FormData();
+            data.append("image",imageFile)
+            try{
+                const response = await fetch(url,{
+                    method: "POST",
+                    body: data,
+                })
 
-            const responseData = await response.json()
+                const responseData = await response.json()
 
-            const foto = responseData.data.url
+                const foto = responseData.data.url
 
-            console.log(foto)
-            
-            var form = document.querySelector('form');
+                console.log(foto)
+                
+                var form = document.querySelector('form');
+               
+                var divImg = document.getElementsByClassName('contenidoImg')
+                
+                var input = document.createElement('input');
 
-            // Crea un elemento input
-            var input = document.createElement('input');
+                
+                input.type = 'hidden';
+                input.name = 'urlFoto';
+                input.id = 'urlFoto';
+                input.value = foto; 
 
-            // Establece los atributos del elemento input
-            input.type = 'hidden';
-            input.name = 'urlFoto';
-            input.id = 'urlFoto';
-            input.value = foto; // Suponiendo que foto es una variable que contiene el valor que deseas asignar
+                // Añade el elemento input al formulario
+                
+                //divImg.innnert
+                form?.appendChild(input);
+                
+                /**/
 
-            // Añade el elemento input al formulario
-            form?.appendChild(input);
+            }catch(error){
 
-        }catch(error){
-
+            }
         }
+        
 
     }
     
 
-    var formulario=document.querySelector("form")
+    var contentImg=document.getElementById("image")
+
     //console.log(image)
     //console.log(image)
 
-    formulario?.addEventListener("change ",uploadImage)
+    contentImg?.addEventListener("change",uploadImage)
 
     /*
     var image=document.querySelector("#image")

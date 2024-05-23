@@ -1,14 +1,17 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Sesion from "../components/Sesion.astro";
-import { getSession } from 'auth-astro/server';
-const session = await getSession(Astro.request);
+import Layout from '../layouts/Layout.astro';
 
-import { db, producto,like } from 'astro:db';
+let params = Astro.url.searchParams;
+var nombre = params.get('nombreAutor')
+//var contract = params;
+console.log(params)
+console.log(nombre)
 
-const productito = await db.select().from(producto).where(
-	like(producto.autor,session?.user?.name)
-)
+import { db, eq ,like ,producto, } from 'astro:db';
+
+const productito = await db.select().from(producto).where(like(producto.autor,nombre))
+
+console.log(productito)
 
 productito.map(({nombreProducto}) => (
 	console.log(nombreProducto)
@@ -22,12 +25,13 @@ productito.map(({nombreProducto}) => (
         
         <div class="container-fluid">
           <div class="col-12 ">
-            <div class="col-12 d-flex flex-column align-items-center mt-4">
+            <div class="col-12 d-flex flex-column align-items-center">
               <div>
-                <img srcset={session?.user?.image} class="img-fluid  rounded-circle">
+                <img  alt="">
               </div>
               <div>
-                  <h3 class="mt-3">{session?.user?.name}</h3>
+                  <h3>{nombre}</h3>
+				  <a href={"https://www.twitch.tv/"+ nombre} class="btn">Ver canal</a>
               </div>
             </div>
             
@@ -37,7 +41,7 @@ productito.map(({nombreProducto}) => (
 
         <div class=" py-4 d-flex justify-content-center">
           <div class="w-75">
-            <h4 class="ms-2">Mis productos</h4>
+            <h4 class="ms-2">Sus productos</h4>
             <hr/>
           </div>	
         </div>
@@ -73,3 +77,4 @@ productito.map(({nombreProducto}) => (
 
     
 </Layout>
+

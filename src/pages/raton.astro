@@ -17,56 +17,13 @@ productito.map(({nombreProducto}) => (
 ---
 
 <Layout title="Welcome to Astro.">
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container-fluid">
-		  <a class="navbar-brand" href="/">Gamermart</a>
-		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		  </button>
-		  <div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-			  <li class="nav-item">
-				<a class="nav-link active" aria-current="page" href="#">Home</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Features</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Pricing</a>
-			  </li>
-			</ul>
-			
-		  </div>
-		  <Sesion></Sesion>
-		</div>
-	</nav>
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
-		<div class="container-fluid">
-		  <div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-			  <li class="nav-item">
-				<a class="nav-link" aria-current="page" href="#">Periferico</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Ordenadores</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Componentes</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Auriculares</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="#">Monitores</a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link" href="/raton/">Raton</a>
-			  </li>
-			</ul>
-			
-		  </div>
-		</div>
-	</nav>
+
+	<div class=" py-4 d-flex justify-content-center">
+		<div class="w-75">
+			<h4 class="ms-2">Ratones</h4>
+			<hr/>
+		</div>	
+	</div>
 
 	<div class="container-fluid d-flex justify-content-center">
 
@@ -77,7 +34,7 @@ productito.map(({nombreProducto}) => (
 				<div class="d-flex px-2 py-3">
 					<div class="card col-12" style="width: 18rem;">
 						<img srcset={img} class="card-img-top" alt="...">
-						<div class="card-header"><a href={"https://www.twitch.tv/"+autor} class="author">{autor}</a></div>
+						<div class="card-header"><a href={"/mostrarPerfil?nombreAutor="+autor} class="author">{autor}</a></div>
 						<div class="card-body">
 						<h5 class="card-title">{nombreProducto}</h5>
 						<p class="card-text">{descripcion}</p>
