@@ -21,7 +21,7 @@ var imgDato=productoEditar[0].img
 
 
 const session = await getSession(Astro.request);
-
+console.log(session)
 
 
 
@@ -61,7 +61,7 @@ if (Astro.request.method === 'POST') {
             const valorEstado = estadoDato
             const valortipo = tipoEditar
             await db.update(producto).set({ nombreProducto:nombreProductoEditar, descripcion:descripEditar,precio:precioEditar,img:fotito,tipo:valortipo,autor:autor,estado:valorEstado}).where(eq(producto.nombreProducto,nombreProduct)); 
-           
+            
         } else if(estadoEditar != "NoActualizar" && tipoEditar == "NoActualizar"){
             const valorEstado = estadoEditar
             const valortipo= tipoPasado
@@ -71,12 +71,20 @@ if (Astro.request.method === 'POST') {
             const valorEstado = estadoEditar
             const valortipo = tipoEditar
             await db.update(producto).set({ nombreProducto:nombreProductoEditar, descripcion:descripEditar,precio:precioEditar,img:fotito,tipo:valortipo,autor:autor,estado:valorEstado}).where(like(producto.nombreProducto,nombreProduct)); 
-
+            
         }
 
-
+       
+       
     }
-
+    console.log(fotito)
+    console.log(autor)
+    console.log(nombreProductoEditar)
+    console.log(descripEditar)
+    console.log(estadoEditar)
+    console.log(tipoEditar)
+    console.log(precioEditar)
+}
 
 
 ---
