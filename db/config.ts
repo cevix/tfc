@@ -1,3 +1,4 @@
+import Email from '@auth/core/providers/email';
 import { defineDb,defineTable,column} from 'astro:db';
 
 const producto = defineTable({
@@ -13,9 +14,15 @@ const producto = defineTable({
 }) 
 
 
-
+const usuario = defineTable({
+  columns:{
+    nombreusuario:column.text(),
+    urlFotousuario:column.text(),
+    emailusuario:column.text(),
+  }
+})
 
 // https://astro.build/db/config
 export default defineDb({
-  tables: {producto},
+  tables: {producto,usuario},
 });

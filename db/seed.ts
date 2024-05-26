@@ -1,11 +1,11 @@
-import { db , producto } from 'astro:db';
+import { db , producto, usuario} from 'astro:db';
 
 // https://astro.build/db/seed
 
 
 export default async function seed(){
 	await db.insert(producto).values([
-		{	nombreProducto:'Asus ZenScreen Touch',descripcion:'Monitor con pantalla IPS y tactil.Es muy pequeño e incluso portable  para llevarlo mas comodo a donde quieras.Viene ioncluido con soporte para poder llevarlo protegido.',precio:'80',img:'https://i.ibb.co/wc23SbS/monitor.jpg',tipo:'monitor',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'Asus ZenScreen Touch',descripcion:'Monitor con pantalla IPS y tactil.Es muy pequeño e incluso portable  para llevarlo mas comodo a donde quieras.Viene ioncluido con soporte para poder llevarlo protegido.',precio:'80',img:'https://i.ibb.co/wc23SbS/monitor.jpg',tipo:'monitor',autor:'illojuan',estado:'nuevo'
 		},
 		{	nombreProducto:'Logitech G915 LIGHTSPEED',descripcion:'Uno de los mejores teclados de logitech con un gran diseño ergonomico',precio:'23',img:'https://i.ibb.co/CzCWg8j/teclado.jpg',tipo:'teclado',autor:'cevix20000',estado:'nuevo'
 		}
@@ -82,6 +82,25 @@ export default async function seed(){
 		},
 		
 	])
+
+	await db.insert(usuario).values([
+		{
+			nombreusuario:"illojuan",
+			urlFotousuario:"https://static-cdn.jtvnw.net/jtv_user_pictures/7db7d061-fe1f-4641-bc0e-37288e8ed419-profile_image-150x150.png",
+			emailusuario:"Papuillo@gmail.com",
+		  },
+		  {
+			nombreusuario:"djmariio",
+			urlFotousuario:"https://static-cdn.jtvnw.net/jtv_user_pictures/7db7d061-fe1f-4641-bc0e-37288e8ed419-profile_image-150x150.png",
+			emailusuario:"marioGamer@gmail.com",
+		  },
+		  {
+			nombreusuario:"pewdiepie",
+			urlFotousuario:"https://static-cdn.jtvnw.net/jtv_user_pictures/7db7d061-fe1f-4641-bc0e-37288e8ed419-profile_image-150x150.png",
+			emailusuario:"pewdiepie",
+		  }
+	])
+	
 }
 
 /*

@@ -1,15 +1,20 @@
 ---
+
 import Layout from '../layouts/Layout.astro';
 
 let params = Astro.url.searchParams;
 var nombre = params.get('nombreAutor')
 //var contract = params;
+
 console.log(params)
 console.log(nombre)
 
-import { db, eq ,like ,producto, } from 'astro:db';
+import { db, eq ,like ,producto,usuario } from 'astro:db';
+
+const datousuario = await db.select().from(usuario).where(like(usuario.nombreusuario,nombre))
 
 const productito = await db.select().from(producto).where(like(producto.autor,nombre))
+
 
 ---
 
@@ -18,14 +23,21 @@ const productito = await db.select().from(producto).where(like(producto.autor,no
 
         
         <div class="container-fluid">
-          <div class="col-12 ">
-            <div class="col-12 d-flex flex-column align-items-center">
-              <div>
-                <img  alt="">
+          <div class="col-12  mt-4">
+            <div class="col-12 d-flex flex-column justify-content-center align-items-center">
+              <div >
+                <img srcset={datousuario[0].urlFotousuario} class="img-fluid rounded-circle">
               </div>
-              <div>
-                  <h3>{nombre}</h3>
-				          <a href={"https://www.twitch.tv/"+ nombre} class="btn">Ver canal</a>
+              <div class=" mt-4">
+                <div class="d-flex justify-content-center">
+                  <h3>{datousuario[0].nombreusuario}</h3>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <a href={"https://www.twitch.tv/"+ nombre} class="btn">Ver canal</a>
+                </div>
+                <div class="d-flex justify-content-center">
+                  <h4>Correo de contacto:<br>{datousuario[0].emailusuario}</h4>
+                </div>
               </div>
             </div>
             
