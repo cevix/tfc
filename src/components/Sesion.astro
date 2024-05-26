@@ -1,8 +1,12 @@
 ---
 import { getSession } from 'auth-astro/server';
 const session = await getSession(Astro.request);
-console.log(session)
 
+if(session){
+	console.log(session)
+}else{
+	console.log("sesion cerrada")
+}
 
 const {nombreUsuario=session?.user?.name}=Astro.props
 ---

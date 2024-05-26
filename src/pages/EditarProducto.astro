@@ -1,41 +1,91 @@
 ---
-import { db,producto } from "astro:db";
+import { db,producto, like,eq } from "astro:db";
 import Layout from "../layouts/Layout.astro";
 import { getSession } from "auth-astro/server";
 //https://api.imgbb.com/1/upload?&key=a18deced07307d21deb85f9c3ee0c5f7
+
+let params = Astro.url.searchParams;
+let nombreProduct = params.get('producto')
+
+console.log(nombreProduct)
+const productoEditar = await db.select().from(producto).where(
+	like(producto.nombreProducto,nombreProduct)
+)
+
+var nombreProductoPasado =productoEditar[0].nombreProducto
+var descripcionPasado= productoEditar[0].descripcion
+var precioPasado = productoEditar[0].precio
+var tipoPasado = productoEditar[0].tipo
+var estadoDato = productoEditar[0].estado
+var imgDato=productoEditar[0].img
+
+
 const session = await getSession(Astro.request);
 console.log(session)
+
+
+
 
 if (Astro.request.method === 'POST') {
     const formData = await Astro.request.formData();
     const fotito= formData.get('urlFoto')
     
-    const autor = session?.user?.name
-    const nombreProducto = formData.get('nombre')
-    const descrip = formData.get('descrip')
-    const estado = formData.get('estado')
-    const tipo = formData.get('tipo')
-    const precio = formData.get('precio')
+    const autor = formData.get('autor')
+    const nombreProductoEditar = formData.get('nombre')
+    const descripEditar = formData.get('descrip')
+    const estadoEditar = formData.get('estado')
+    const tipoEditar = formData.get('tipo')
+    
+    
+    
+    
 
+    const precioEditar = formData.get('precio')
+    
+
+    
     if (typeof autor === 'string' && 
-    typeof nombreProducto === 'string' && 
-    typeof descrip === 'string' && 
-    typeof estado === 'string' && 
-    typeof tipo === 'string'&& 
-    typeof precio === 'string'&& 
+    typeof nombreProductoEditar === 'string' && 
+    typeof descripEditar === 'string' && 
+    typeof estadoEditar === 'string' && 
+    typeof tipoEditar === 'string'&& 
+    typeof precioEditar === 'string'&& 
     typeof fotito === 'string') {
-        await db.insert(producto).values({ nombreProducto:nombreProducto, descripcion:descrip,precio:precio,img:fotito,tipo:tipo,autor:autor,estado:estado}); 
-       console.log("todo funciono correctamente")
+
+        if (estadoEditar == "NoActualizar" && tipoEditar == "NoActualizar" ) {
+        const valorEstado = estadoDato
+        const valortipo= tipoPasado
+            await db.update(producto).set({ nombreProducto:nombreProductoEditar, descripcion:descripEditar,precio:precioEditar,img:fotito,tipo:valortipo,autor:autor,estado:valorEstado}).where(eq(producto.nombreProducto,nombreProduct)); 
+            console.log("caso1")
+        } else if (estadoEditar == "NoActualizar" && tipoEditar != "NoActualizar") {
+            const valorEstado = estadoDato
+            const valortipo = tipoEditar
+            await db.update(producto).set({ nombreProducto:nombreProductoEditar, descripcion:descripEditar,precio:precioEditar,img:fotito,tipo:valortipo,autor:autor,estado:valorEstado}).where(eq(producto.nombreProducto,nombreProduct)); 
+            console.log("caso2")
+        } else if(estadoEditar != "NoActualizar" && tipoEditar == "NoActualizar"){
+            const valorEstado = estadoEditar
+            const valortipo= tipoPasado
+            await db.update(producto).set({ nombreProducto:nombreProductoEditar, descripcion:descripEditar,precio:precioEditar,img:fotito,tipo:valortipo,autor:autor,estado:valorEstado}).where(eq(producto.nombreProducto,nombreProduct)); 
+            console.log("caso3")
+        }else{
+            const valorEstado = estadoEditar
+            const valortipo = tipoEditar
+            await db.update(producto).set({ nombreProducto:nombreProductoEditar, descripcion:descripEditar,precio:precioEditar,img:fotito,tipo:valortipo,autor:autor,estado:valorEstado}).where(like(producto.nombreProducto,nombreProduct)); 
+            console.log("caso4")
+        }
+
        
+       console.log("todo funciono correctamente") 
     }
     console.log(fotito)
     console.log(autor)
-    console.log(nombreProducto)
-    console.log(descrip)
-    console.log(estado)
-    console.log(tipo)
-    console.log(precio)
+    console.log(nombreProductoEditar)
+    console.log(descripEditar)
+    console.log(estadoEditar)
+    console.log(tipoEditar)
+    console.log(precioEditar)
 }
+
 
 ---
 
@@ -46,25 +96,26 @@ if (Astro.request.method === 'POST') {
     <div class="col-6 mt-5">
         <form method="post">
 
-            <h3>Publicar Producto</h3>
+            <h3>Editar Producto</h3>
             <hr/>
             <div class="contenidoImg">
-
+                <input type="hidden" name="urlFoto" value={imgDato}>
             </div>
+            <input type="hidden" name="autor" value={session?.user?.name}>
             
                 <div class="mb-3">
                     <label for="formGroupExampleInput" class="form-label">Nombre del producto</label>
-                    <input type="text" class="form-control" name="nombre" placeholder="Introduce el nombre del producto" required>
+                    <input type="text" class="form-control" name="nombre" placeholder="Introduce el nombre del producto" value={nombreProductoPasado} required>
                 </div>
                 <div class="mb-3">
                     <label for="formGroupExampleInput2" class="form-label">Descripción</label>
-                    <input type="text" class="form-control" name="descrip" placeholder="Introduce la descripción del producto">
+                    <input type="text" class="form-control" name="descrip" placeholder="Introduce la descripción del producto" value={descripcionPasado}>
                 </div>
 
                 <div class="col-md-3 mb-3">
                     <label for="validationCustom04" class="form-label">Tipo</label>
-                    <select class="form-select" name="tipo" required>
-                      <option selected disabled value="">Elige el tipo del producto</option>
+                    <select class="form-select" name="tipo" required >
+                      <option selected  value="NoActualizar">No actualizar tipo</option>
                       <option value="raton">Ratón</option>
                       <option value="teclado">Teclado</option>
                       <option value="monitor">Monitor</option>
@@ -80,14 +131,14 @@ if (Astro.request.method === 'POST') {
                 <div class="col-md-3 mb-3">
                     <label for="validationCustom04" class="form-label">Estado</label>
                     <select class="form-select" name="estado" required>
-                      <option selected disabled value="">Elige el estado del producto</option>
-                      <option value="Sin abrir">Sin abrir</option>
-                      <option value="En su caja">En su caja</option>
-                      <option value="Nuevo">Nuevo</option>
-                      <option value="Como nuevo">Como nuevo</option>
-                      <option value="En buen estado">En buen estado</option>
-                      <option value="En condiciones aceptable">En condiciones aceptable</option>
-                      <option value="Lo ha dado todo">Lo ha dado todo</option>
+                        <option selected value="NoActualizar">No actualizar Estado</option>
+                        <option value="Sin abrir">Sin abrir</option>
+                        <option value="En su caja">En su caja</option>
+                        <option value="Nuevo">Nuevo</option>
+                        <option value="Como nuevo">Como nuevo</option>
+                        <option value="En buen estado">En buen estado</option>
+                        <option value="En condiciones aceptable">En condiciones aceptable</option>
+                        <option value="Lo ha dado todo">Lo ha dado todo</option>
                       
                     </select>
                     <div class="invalid-feedback">
@@ -97,7 +148,7 @@ if (Astro.request.method === 'POST') {
                 
                 <div class="mb-3 ">
                     <label for="formGroupExampleInput2" class="form-label">Precio</label>
-                    <input type="number" class="form-control" name="precio" placeholder="Introduce el precio del producto">
+                    <input type="number" class="form-control" name="precio" value={precioPasado} placeholder="Introduce el precio del producto">
                 </div>
                 <div class="mb-3">
                     <input id="image" class="form-control" type="file" name="image" accept="image/*">

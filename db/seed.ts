@@ -5,7 +5,7 @@ import { db , producto } from 'astro:db';
 
 export default async function seed(){
 	await db.insert(producto).values([
-		{	nombreProducto:'Asus ZenScreen Touch ',descripcion:'Monitor con pantalla IPS y tactil.Es muy pequeño e incluso portable  para llevarlo mas comodo a donde quieras.Viene ioncluido con soporte para poder llevarlo protegido.',precio:'80',img:'https://i.ibb.co/wc23SbS/monitor.jpg',tipo:'monitor',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'Asus ZenScreen Touch',descripcion:'Monitor con pantalla IPS y tactil.Es muy pequeño e incluso portable  para llevarlo mas comodo a donde quieras.Viene ioncluido con soporte para poder llevarlo protegido.',precio:'80',img:'https://i.ibb.co/wc23SbS/monitor.jpg',tipo:'monitor',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'Logitech G915 LIGHTSPEED',descripcion:'Uno de los mejores teclados de logitech con un gran diseño ergonomico',precio:'23',img:'https://i.ibb.co/CzCWg8j/teclado.jpg',tipo:'teclado',autor:'cevix20000',estado:'nuevo'
 		}
@@ -41,9 +41,9 @@ export default async function seed(){
 		},
 		{	nombreProducto:'Logitech K380',descripcion:'Un teclado inalambrico de color rosa con color.Es muy compacto para poder llevarlo con facilidad a cualquier parte.',precio:'32',img:'https://i.ibb.co/CzCWg8j/teclado.jpg',tipo:'teclado',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'AMD Ryzen 7 7800X3D ',descripcion:'Procesador con año y medio de uso.Es de la septima generacion.Viene con procesador genrico de AMD y en su caja.Es un procesador muy potente para renderizar juegos',precio:'247',img:'https://i.ibb.co/t3bJpVj/procesador.jpg',tipo:'componete',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'AMD Ryzen 7 7800X3D',descripcion:'Procesador con año y medio de uso.Es de la septima generacion.Viene con procesador genrico de AMD y en su caja.Es un procesador muy potente para renderizar juegos',precio:'247',img:'https://i.ibb.co/t3bJpVj/procesador.jpg',tipo:'componete',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'AMD Ryzen 5 5500 ',descripcion:'Ryzen de la quinta generacion tiene 4 años de uso y funciona perfectamente.Se vende con la caja y el ventilador de AMD.',precio:'56',img:'https://i.ibb.co/t3bJpVj/procesador.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'AMD Ryzen 5 5500',descripcion:'Ryzen de la quinta generacion tiene 4 años de uso y funciona perfectamente.Se vende con la caja y el ventilador de AMD.',precio:'56',img:'https://i.ibb.co/t3bJpVj/procesador.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'Samsung Odyssey',descripcion:'un monitor  de 32 pulgadas con frecuencia de 165 Hz con tecnologia freesync.La pantara del monitor es LED QHD y curvo',precio:'204',img:'https://i.ibb.co/wc23SbS/monitor.jpg',tipo:'monitor',autor:'cevix20000',estado:'nuevo'
 		},
@@ -67,15 +67,16 @@ export default async function seed(){
 		},
 		{	nombreProducto:'Astro Gaming A50',descripcion:'Los mejores cascos inalambricos para el gaming con una bateria muy duraadera.Son unos auriculares muy comodos  y con la que se puede pasar varias horas puestas.Son compatibles con targetas de sonido usb,perfecto para los steaming en twich',precio:'160',img:'https://i.ibb.co/xFwhVkQ/auriculares.jpg',tipo:'auriculares',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'Forgeon Azoth 360 ARGB  ',descripcion:'Refigerion ligida  de 360 mm.ES muy grande ideal para torres grandres y procesadores que se calientan mucho',precio:'62',img:'https://i.ibb.co/PmKFkXV/refigeracion-Liquida.png',tipo:'componente',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'Forgeon Azoth 360 ARGB',descripcion:'Refigerion ligida  de 360 mm.ES muy grande ideal para torres grandres y procesadores que se calientan mucho',precio:'62',img:'https://i.ibb.co/PmKFkXV/refigeracion-Liquida.png',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'Memoria RAM Kingston FURY Beast ',descripcion:'Dos memporia Ram con unj total de 16GB(2 x 8GB).Tiene una frecuencia de 6000Hz con conexion DDR5.',precio:'90',img:'https://i.ibb.co/vZqGYcV/ram.jpg',tipo:'periferico',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'Memoria RAM Kingston FURY Beast',descripcion:'Dos memporia Ram con unj total de 16GB(2 x 8GB).Tiene una frecuencia de 6000Hz con conexion DDR5.',precio:'90',img:'https://i.ibb.co/vZqGYcV/ram.jpg',tipo:'periferico',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'MSI GeForce RTX 3060 VENTUS 2X ',descripcion:'Una targeta garica con gddr6 tiene dos ventiladores.Es la version overclock y con 3 puertos display port y uno de hdmi.Tiene un año de uso.',precio:'275',img:'https://i.ibb.co/M8zDwZh/targeta-Grafica.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'MSI GeForce RTX 3060 VENTUS 2X',descripcion:'Una targeta garica con gddr6 tiene dos ventiladores.Es la version overclock y con 3 puertos display port y uno de hdmi.Tiene un año de uso.',precio:'275',img:'https://i.ibb.co/M8zDwZh/targeta-Grafica.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		}
 		,
 		{	nombreProducto:'logitech G435',descripcion:'Auriculas imposible de romper',precio:'36',img:'https://i.ibb.co/xFwhVkQ/auriculares.jpg',tipo:'auricular',autor:'cevix20000',estado:'nuevo'
-		},{	nombreProducto:'Intel Core i7-14700K',descripcion:'VEnde este procesador de intel de decimacuarta generacion esta en su caja sin abrir,cviene con un regalado que dan en pccomponets.Tiene garantia de 2 años',precio:'480',img:'https://i.ibb.co/t3bJpVj/procesador.jpg',tipo:'componete',autor:'cevix20000',estado:'nuevo'
+		},
+		{	nombreProducto:'Intel Core i7-14700K',descripcion:'VEnde este procesador de intel de decimacuarta generacion esta en su caja sin abrir,cviene con un regalado que dan en pccomponets.Tiene garantia de 2 años',precio:'480',img:'https://i.ibb.co/t3bJpVj/procesador.jpg',tipo:'componete',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'MSI MAG CORELIQUID M240 ',descripcion:'Refigeracion liquida in one con dos ventiladores y viene con luces RGB.Es pequeño ,muy ideal para ordenadores de tamaño medio.',precio:'79',img:'https://i.ibb.co/PmKFkXV/refigeracion-Liquida.png',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		},

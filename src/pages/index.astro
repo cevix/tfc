@@ -1,43 +1,71 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import Sesion from '../components/Sesion.astro';
+
 
 
 import { db, producto, } from 'astro:db';
+import BuscarProducto from './BuscarProducto.astro';
+
+	/*
+    if (Astro.request.method == 'POST') {
+		
+		console.log(buscarProducto)
+	}*/
+	
+	if (Astro.request.method == 'POST') {
+		const formData = await Astro.request.formData();
+
+    	const buscarProducto = formData.get('buscarproducto')
+		if(typeof buscarProducto == 'string'){
+		return Astro.redirect('/BuscarProducto?productoBuscar='+buscarProducto)
+		}
+	}
+  
+   
+    
+	
+
 
 const productito = await db.select().from(producto)
 
 ---
 
 <Layout title="Welcome to Astro.">
+	<div class="container-fluid d-flex justify-content-center">
 		
+		<form method="post" class="d-flex">
+			<input type="text" class="form-control col-10 px-2" name="buscarproducto" id="buscarproducto" placeholder="name@example.com">
+			<input type="submit" class="btn btn-primary">
+		</form>
+	
+</div>
 	<div class=" py-4 d-flex justify-content-center">
 		<div class="w-75">
 			<h4 class="ms-2">Productos</h4>
 			<hr/>
 		</div>	
 	</div>
-	<div class="container-fluid d-flex justify-content-center">
+	
+	<div class="container-fluid d-flex justify-content-center d-flex">
 		
-	</div>
-	<div class="container-fluid d-flex justify-content-center">
 
 		<div class="col-10 d-flex flex-wrap justify-content-center">
 			<!-- <div class="col-3 px-3">--><!-- </div>              -->	
 			{
 				productito.map(({ nombreProducto, descripcion,precio,img,tipo,autor,estado }) => (
 				<div class="d-flex px-2 py-3">
-					<div class="card col-12" style="width: 18rem;">
-						<img srcset={img} class="card-img-top" alt="...">
-						<div class="card-header"><a href={"/mostrarPerfil?nombreAutor="+autor} class="author">{autor}</a></div>
-						<div class="card-body">
-						<h5 class="card-title">{nombreProducto}</h5>
-						<p class="card-text">{descripcion}</p>
-						<input type="hidden" value={autor}>
-						<h4>{precio + "€"}</h4>
+					<a href={"/DetalleProducto?DatoProducto="+nombreProducto} title="ver datos del producto">
+						<div class="card col-12" style="width: 18rem;">
+							<img srcset={img} class="card-img-top" alt="...">
+							<div class="card-header"><a href={"/mostrarPerfil?nombreAutor="+autor} class="author">{autor}</a></div>
+							<div class="card-body">
+							<h5 class="card-title">{nombreProducto}</h5>
+							<p class="card-text">{descripcion}</p>
+							<input type="hidden" value={autor}>
+							<h4>{precio + "€"}</h4>
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 				
 				))
@@ -48,6 +76,9 @@ const productito = await db.select().from(producto)
 		
 
 	</div>
+
+	
+
 	<style>
 		a{text-decoration: none;}
 	</style>

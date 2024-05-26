@@ -11,12 +11,6 @@ import { db, eq ,like ,producto, } from 'astro:db';
 
 const productito = await db.select().from(producto).where(like(producto.autor,nombre))
 
-console.log(productito)
-
-productito.map(({nombreProducto}) => (
-	console.log(nombreProducto)
-))
-
 ---
 
 <Layout title="Welcome to Astro.">

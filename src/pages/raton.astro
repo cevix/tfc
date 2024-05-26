@@ -10,10 +10,6 @@ const productito = await db.select().from(producto).where(
 	like(producto.tipo,'raton')
 )
 
-productito.map(({nombreProducto}) => (
-	console.log(nombreProducto)
-))
-
 ---
 
 <Layout title="Welcome to Astro.">
