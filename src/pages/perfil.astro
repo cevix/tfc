@@ -69,12 +69,14 @@ const productito = await db.select().from(producto).where(
                     <h5 class="card-title">{nombreProducto}</h5>
                     <p class="card-text">{descripcion}</p>
                     <h4>{precio + "€"}</h4>
-                    <div>
-                      <a href={"/EditarProducto?producto="+nombreProducto}><button type="button" class="btn btn-primary">Primary</button></a>
+                    <div class="d-flex justify-content">
+                      <a href={"/EditarProducto?producto="+nombreProducto}><button type="button" class="btn btn-primary me-2">Actualizar</button></a>
                       
                       <form action="/perfil" method="post" onsubmit="enviarBorrado(event)">
                         <input type="hidden" value={nombreProducto} name="borrarProducto">
-                          <input type="hidden" value={descripcion} name="descripcionBorrar"><input type="submit" class="btn btn-danger" value="borrar"></form>
+                          <input type="hidden" value={descripcion} name="descripcionBorrar"><input type="submit" class="btn btn-danger" value="borrar">
+
+                      </form>
                     </div>
                     </div>
                   </div>

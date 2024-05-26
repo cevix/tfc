@@ -33,8 +33,8 @@ const productito = await db.select().from(producto)
 <Layout title="Welcome to Astro.">
 	<div class="container-fluid d-flex justify-content-center">
 		
-		<form method="post" class="d-flex">
-			<input type="text" class="form-control col-10 px-2" name="buscarproducto" id="buscarproducto" placeholder="name@example.com">
+		<form method="post" class="d-flex mt-3">
+			<input type="text" class="form-control col-10 mx-3" name="buscarproducto" id="buscarproducto" placeholder="Buscar producto">
 			<input type="submit" class="btn btn-primary">
 		</form>
 	
@@ -57,11 +57,9 @@ const productito = await db.select().from(producto)
 					<a href={"/DetalleProducto?DatoProducto="+nombreProducto} title="ver datos del producto">
 						<div class="card col-12" style="width: 18rem;">
 							<img srcset={img} class="card-img-top" alt="...">
-							<div class="card-header"><a href={"/mostrarPerfil?nombreAutor="+autor} class="author">{autor}</a></div>
 							<div class="card-body">
 							<h5 class="card-title">{nombreProducto}</h5>
-							<p class="card-text">{descripcion}</p>
-							<input type="hidden" value={autor}>
+							
 							<h4>{precio + "€"}</h4>
 							</div>
 						</div>

@@ -13,6 +13,8 @@ const producto = defineTable({
 }) 
 
 
+
+
 // https://astro.build/db/config
 export default defineDb({
   tables: {producto},

@@ -45,16 +45,18 @@ console.log(productito)
 			{
 				productito.map(({ nombreProducto, descripcion,precio,img,tipo,autor,estado }) => (
 				<div class="d-flex px-2 py-3">
+					<a href={"/DetalleProducto?DatoProducto="+nombreProducto} title="ver datos del producto">
 					<div class="card col-12" style="width: 18rem;">
 						<img srcset={img} class="card-img-top" alt="...">
 						<div class="card-header"><a href={"/mostrarPerfil?nombreAutor="+autor} class="author">{autor}</a></div>
 						<div class="card-body">
 						<h5 class="card-title">{nombreProducto}</h5>
 						
-						<input type="hidden" value={autor}>
+						
 						<h4>{precio + "€"}</h4>
 						</div>
 					</div>
+					</a>
 				</div>
 				
 				))
