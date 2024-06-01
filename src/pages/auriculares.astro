@@ -11,6 +11,16 @@ const productito = await db.select().from(producto).where(
 )
 
 
+if (Astro.request.method == 'POST') {
+		const formData = await Astro.request.formData();
+
+    	const buscarProducto = formData.get('buscarproducto')
+		if(typeof buscarProducto == 'string'){
+		return Astro.redirect('/BuscarProducto?productoBuscar='+buscarProducto)
+		}
+	}
+  
+
 ---
 
 <Layout title="Welcome to Astro.">
@@ -57,6 +67,13 @@ const productito = await db.select().from(producto).where(
 		
 
 	</div>
+
+	<style>
+		a{text-decoration: none;}
+    .sombrado{
+        box-shadow: 0.2rem;
+    }
+	</style>
 	
 </Layout>
 

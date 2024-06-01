@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+
 import Sesion from '../components/Sesion.astro';
 
 
@@ -9,6 +9,16 @@ import { db, producto,like } from 'astro:db';
 const productito = await db.select().from(producto).where(
 	like(producto.tipo,'componente')
 )
+
+if (Astro.request.method == 'POST') {
+		const formData = await Astro.request.formData();
+
+    	const buscarProducto = formData.get('buscarproducto')
+		if(typeof buscarProducto == 'string'){
+		return Astro.redirect('/BuscarProducto?productoBuscar='+buscarProducto)
+		}
+	}
+  
 
 
 ---
@@ -58,6 +68,13 @@ const productito = await db.select().from(producto).where(
 		
 
 	</div>
+
+	<style>
+		a{text-decoration: none;}
+    .sombrado{
+        box-shadow: 0.2rem;
+    }
+	</style>
 	
 </Layout>
 
