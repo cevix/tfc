@@ -32,11 +32,11 @@ const productito = await db.select().from(producto)
 ---
 
 <Layout title="Welcome to Astro.">
-	<div class="container-fluid d-flex justify-content-center">
+	<div class="container-fluid d-flex  justify-content-center">
 		
-		<form method="post" class="d-flex mt-3">
-			<input type="text" class="form-control col-10 mx-3" name="buscarproducto" id="buscarproducto" placeholder="Buscar producto">
-			<input type="submit" class="btn btn-primary">
+		<form method="post" class="d-flex mt-3 px-5 justify-content-center">
+			<input type="text" class="form-control col-10 me-3 mt-2" name="buscarproducto" id="buscarproducto" placeholder="Buscar producto">
+			<input type="submit" class="btn btn-primary mt-2">
 		</form>
 	
 </div>

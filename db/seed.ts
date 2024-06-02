@@ -15,7 +15,7 @@ export default async function seed(){
 		,
 		{	nombreProducto:'Corsair VOID ELITE',descripcion:'Auriculas con un microfono perfecto paera la llamadas en discord.Facil de ajustar ',precio:'50',img:'https://i.ibb.co/xFwhVkQ/auriculares.jpg',tipo:'auriculares',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'Gigabyte GeForce RTX 4060 ',descripcion:'Una targeta grafica de ultima generacion  y la version windforce.Tiene DLSS3 con conexion GDDR6 y 8GB de memoria ram',precio:'40',img:'https://i.ibb.co/M8zDwZh/targeta-Grafica.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'Gigabyte GeForce RTX 4060',descripcion:'Una targeta grafica de ultima generacion  y la version windforce.Tiene DLSS3 con conexion GDDR6 y 8GB de memoria ram',precio:'40',img:'https://i.ibb.co/M8zDwZh/targeta-Grafica.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'Logitech POP',descripcion:'Raton pequeño pero muy bonito de color rosa',precio:'60',img:'https://i.ibb.co/S0HQ0xf/logitehc.jpg',tipo:'raton',autor:'cevix20000',estado:'nuevo'
 		},
@@ -47,23 +47,23 @@ export default async function seed(){
 		},
 		{	nombreProducto:'Samsung Odyssey',descripcion:'un monitor  de 32 pulgadas con frecuencia de 165 Hz con tecnologia freesync.La pantara del monitor es LED QHD y curvo',precio:'204',img:'https://i.ibb.co/wc23SbS/monitor.jpg',tipo:'monitor',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'Corsair Vengeance RGB Pro ',descripcion:'Memoria ram de 16 GB cada uno con conexion DDR4 de frecuencia 3200.Estan casi nuevos ya que los he usado muy poco',precio:'40',img:'https://i.ibb.co/vZqGYcV/ram.jpg',tipo:'periferico',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'Corsair Vengeance RGB Pro',descripcion:'Memoria ram de 16 GB cada uno con conexion DDR4 de frecuencia 3200.Estan casi nuevos ya que los he usado muy poco',precio:'40',img:'https://i.ibb.co/vZqGYcV/ram.jpg',tipo:'periferico',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'logitech G713',descripcion:'Teclado de membrana de color blanco con reposabrazo incluido con forma de nube.El reposabrazo es muy comodo para las muñecas.',precio:'40',img:'https://i.ibb.co/CzCWg8j/teclado.jpg',tipo:'teclado',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'Seagate BarraCuda 3.5 ',descripcion:'Disco tipo HDD de la gran marca barracuda con 2TB de memoria.Tiene dos años de uso y esta en buenas condiciones ',precio:'38',img:'https://i.ibb.co/ncfwjT3/ssd2.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'Seagate BarraCuda 3.5',descripcion:'Disco tipo HDD de la gran marca barracuda con 2TB de memoria.Tiene dos años de uso y esta en buenas condiciones ',precio:'38',img:'https://i.ibb.co/ncfwjT3/ssd2.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'Razer Barracuda X',descripcion:'Auriculas de la gran marca razer de colort rosa con un microfono extraible.Es inalambrico y tienen una bateria con autonomia de 20 horas',precio:'68',img:'https://i.ibb.co/xFwhVkQ/auriculares.jpg',tipo:'auriculares',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'ASUS ProArt',descripcion:'Monitor con varios años de uso.Tiene 34 pulgadas con una pantalla ips con una frecuencia de 120 Hz con tecnologia freeSync',precio:'168',img:'https://i.ibb.co/wc23SbS/monitor.jpg',tipo:'monitor',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'Corsair Vengeance LPX ',descripcion:'Ram de 16 GB cada uno sin luces  con conexion DDR4.La frecuencia es de 4200Hz una velocidad muy buena para correr el fornite',precio:'56',img:'https://i.ibb.co/vZqGYcV/ram.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'Corsair Vengeance LPX',descripcion:'Ram de 16 GB cada uno sin luces  con conexion DDR4.La frecuencia es de 4200Hz una velocidad muy buena para correr el fornite',precio:'56',img:'https://i.ibb.co/vZqGYcV/ram.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'Samsung ViewFinity S9',descripcion:'Un monitor curvo de 49 pulgadas.El monitor tiene el tamaño de dos monitores juntos y con altavoces incorporados',precio:'500',img:'https://i.ibb.co/wc23SbS/monitor.jpg',tipo:'monitor',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'MSI MPG B550 GAMING PLUS',descripcion:'Placa base ideal para montar un ordenador gamer compatible con los procesadores de la última generación de intel.Vine con todos sus cables sata para conectar los dicscos duros y los tornillos y soporte para los procesadores',precio:'42',img:'https://i.ibb.co/mFHd55S/placa-Base.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'ASUS PRIME Z790-P WIFI ',descripcion:'Una de las mejores placas que hay y con una gran estetica increible y de color blanco.Tienen incorporado en la placa el wifi y bluetooth',precio:'80',img:'https://i.ibb.co/mFHd55S/placa-Base.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'ASUS PRIME Z790-P WIFI',descripcion:'Una de las mejores placas que hay y con una gran estetica increible y de color blanco.Tienen incorporado en la placa el wifi y bluetooth',precio:'80',img:'https://i.ibb.co/mFHd55S/placa-Base.jpg',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		},
 		{	nombreProducto:'Astro Gaming A50',descripcion:'Los mejores cascos inalambricos para el gaming con una bateria muy duraadera.Son unos auriculares muy comodos  y con la que se puede pasar varias horas puestas.Son compatibles con targetas de sonido usb,perfecto para los steaming en twich',precio:'160',img:'https://i.ibb.co/xFwhVkQ/auriculares.jpg',tipo:'auriculares',autor:'cevix20000',estado:'nuevo'
 		},
@@ -78,7 +78,7 @@ export default async function seed(){
 		},
 		{	nombreProducto:'Intel Core i7-14700K',descripcion:'VEnde este procesador de intel de decimacuarta generacion esta en su caja sin abrir,cviene con un regalado que dan en pccomponets.Tiene garantia de 2 años',precio:'480',img:'https://i.ibb.co/t3bJpVj/procesador.jpg',tipo:'componete',autor:'cevix20000',estado:'nuevo'
 		},
-		{	nombreProducto:'MSI MAG CORELIQUID M240 ',descripcion:'Refigeracion liquida in one con dos ventiladores y viene con luces RGB.Es pequeño ,muy ideal para ordenadores de tamaño medio.',precio:'79',img:'https://i.ibb.co/PmKFkXV/refigeracion-Liquida.png',tipo:'componente',autor:'cevix20000',estado:'nuevo'
+		{	nombreProducto:'MSI MAG CORELIQUID M240',descripcion:'Refigeracion liquida in one con dos ventiladores y viene con luces RGB.Es pequeño ,muy ideal para ordenadores de tamaño medio.',precio:'79',img:'https://i.ibb.co/PmKFkXV/refigeracion-Liquida.png',tipo:'componente',autor:'cevix20000',estado:'nuevo'
 		},
 		
 	])
